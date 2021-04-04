@@ -16,23 +16,36 @@ public class szamologep extends javax.swing.JFrame {
 
     Random rnd = new Random();
     int joValaszSzamlalo = 0;
-    
+
     private void kivonas() {
         /*Műveletek*/
+        int a = rnd.nextInt(99) + 1;
+        int b = rnd.nextInt(99) + 1;
+        int c = 0;
+
+        while (a - b < 0 || b > a || a == 0) {
+            a = rnd.nextInt(99) + 1;
+            b = rnd.nextInt(99) + 1;
+        }
+        
+        if (a > b) {
+            jLabel1.setText(a + " - " + b + " = ");
+            c = a - b;
+        }
     }
-    
+
     private void osztas() {
         /*Műveletek:*/
         int a = rnd.nextInt(99) + 1;
         int b = rnd.nextInt(99) + 1;
         int c = 0;
-        
+
         /*Elintézni hogy legyenek olyan számok amik oszthatóak*/
         while (!(a % b == 0 || b % a == 0)) {
             a = rnd.nextInt(99) + 1;
             b = rnd.nextInt(99) + 1;
         }
-        
+
         /*Ellenőrzés mit lehet osztani mivel,
         ezután végre hajtani az osztást későbbi ellenőrzésre*/
         if (a > b) {
@@ -42,10 +55,10 @@ public class szamologep extends javax.swing.JFrame {
             jLabel1.setText(b + " : " + a + " = ");
             c = b / a;
         }
-        
+
         /*Gomb nyomásra ellenőrizni jó választ adott e a felhasználó,
         ha jó választ akkor kiírni hogy jó e a válasz vagy sem*/
-        /*
+ /*
         if (jButton4.isSelected()) {
             if (Integer.parseInt("" + jTextField1.getText()) == c) {
                 jLabel5.setText("Jó válasz");
@@ -55,7 +68,7 @@ public class szamologep extends javax.swing.JFrame {
             }
         }*/
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -96,6 +109,11 @@ public class szamologep extends javax.swing.JFrame {
         jMenu1.add(Összeadás);
 
         jMenuItem2.setText("Kivonás");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Szorzás");
@@ -163,6 +181,10 @@ public class szamologep extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         osztas();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        kivonas();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
