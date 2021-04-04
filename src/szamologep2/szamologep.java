@@ -18,7 +18,7 @@ public class szamologep extends javax.swing.JFrame {
     int joValaszSzamlalo = 0;
     
     private void kivonas() {
-
+        /*Műveletek*/
     }
     
     private void osztas() {
