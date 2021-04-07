@@ -9,7 +9,7 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 
 public class szamologep extends javax.swing.JFrame {
-
+int eredmeny=0;
     public szamologep() {
         initComponents();
     }
@@ -100,6 +100,11 @@ public class szamologep extends javax.swing.JFrame {
         jLabel2.setText("Válassz a feladatok közül a menüben és old meg a feladatot.");
 
         jButton4.setText("Ellenőrzés");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Helyes válasz:");
 
@@ -117,6 +122,11 @@ public class szamologep extends javax.swing.JFrame {
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Szorzás");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         jMenuItem4.setText("Osztás");
@@ -186,6 +196,14 @@ public class szamologep extends javax.swing.JFrame {
         kivonas();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+       szorzas();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+         ellenorzes();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -236,4 +254,31 @@ public class szamologep extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JMenuItem Összeadás;
     // End of variables declaration//GEN-END:variables
+
+    private void szorzas() {
+        int elso=0;
+        int masodik=0;
+        elso=rnd.nextInt(10)+1;
+        masodik=rnd.nextInt(10)+1;
+        String atvalt=String.valueOf(elso);
+        String atval=String.valueOf(masodik);
+         eredmeny=elso*masodik;
+        String szoveg=atvalt+"*"+atval+"=";
+        jLabel1.setText(szoveg);
+    }
+
+    private void ellenorzes() {
+        int szam=Integer.parseInt(jTextField1.getText());
+        
+        System.out.println(eredmeny);
+        if (eredmeny==szam) {
+            jLabel5.setText("Helyes válasz:"+" jo");
+            joValaszSzamlalo++;
+            System.out.println(joValaszSzamlalo);
+        }
+        else{
+            
+            jLabel5.setText("Helyes válasz:"+"  nem jó");
+        }
+    }
 }
